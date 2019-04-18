@@ -16,22 +16,40 @@ const server = net
     socket.setEncoding('utf8');
     socket.on('data', (data) => {
       // this is the request
-      console.log(data);
+      //console.log(data);
 
       // do work here
       let myResponse = '';
       const endIndex = data.indexOf(' HTTP/1.1');
       let headValue = data.substring(5, endIndex);
+      let replyLength = 0;
+      let replyContent = '';
+      //console.log(headValue);
       for (let i = 0; i < contentObjs.length; i++) {
+        //console.log(contentObjs[i].fileName);
         if (headValue === contentObjs[i].fileName) {
-          myResponse = `HTTP/1.1 200 OK
-Content-Length: ${contentObjs[i].content.length}
-
-${contentObjs[i].content}
-`;
+          replyContent = contentObjs[i].content;
+          replyLength = contentObjs[i].content.length;
+          console.log(replyLength);
         }
       }
+      console.log(replyLength);
+      myResponse = `HTTP/1.1 200 OK
+Date: ${new Date()}
+Content-Type: text/html; charset=utf-8
+Content-Length: 827
 
+${replyContent}`;
+
+      //           myResponse = `HTTP/1.1 200 OK
+      // Date: ${new Date()}
+      // Content-Type: text/html; charset=utf-8
+      // Content-Length: ${contentObjs[i].content.length}
+
+      // ${contentObjs[i].content}`;
+      //   }
+      // }
+      //console.log(myResponse);
       // send response back here
       socket.end(myResponse);
     });
