@@ -3,6 +3,7 @@
 const myReplies = [
   {
     fileName: '404.html',
+    status: '404 Page Not Found',
     content: `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -21,6 +22,7 @@ const myReplies = [
   },
   {
     fileName: 'helium.html',
+    status: '200 OK',
     content: `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -39,6 +41,7 @@ const myReplies = [
   },
   {
     fileName: 'hydrogen.html',
+    status: '200 OK',
     content: `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -57,6 +60,7 @@ const myReplies = [
   },
   {
     fileName: 'index.html',
+    status: '200 OK',
     content: `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -81,6 +85,7 @@ const myReplies = [
   },
   {
     fileName: 'styles.css',
+    status: '200 OK',
     content: `@import url(http://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab);
 
     /* http://meyerweb.com/eric/tools/css/reset/

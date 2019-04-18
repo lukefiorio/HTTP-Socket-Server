@@ -18,17 +18,19 @@ const server = net
       const startIndex = data.indexOf(' /');
       const endIndex = data.indexOf(' HTTP/1.1');
       let headerFile = data.substring(startIndex + 2, endIndex);
+      let replyStatus = '';
       let replyLength = 0;
       let replyContent = '';
 
       for (let i = 0; i < myReplies.length; i++) {
         if (headerFile === myReplies[i].fileName) {
-          replyContent = myReplies[i].content;
+          replyStatus = myReplies[i].status;
           replyLength = myReplies[i].content.length;
+          replyContent = myReplies[i].content;
         }
       }
 
-      myResponse = `HTTP/1.1 200 OK
+      myResponse = `HTTP/1.1 ${replyStatus}
 Date: ${new Date()}
 Content-Type: text/html; charset=utf-8
 Content-Length: ${replyLength}
