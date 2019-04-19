@@ -3,12 +3,6 @@
 const myReplies = require('./data.js');
 const net = require('net');
 
-const response = `HTTP/1.1 200 OK
-Content-Length: 4
-
-asdf
-`;
-
 // create a server
 const server = net
   .createServer((socket) => {
