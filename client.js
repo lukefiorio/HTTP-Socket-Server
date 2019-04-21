@@ -3,7 +3,6 @@
 const process = require('process');
 const net = require('net');
 const fs = require('fs');
-// fs.writeFile;
 
 let headerObj = {};
 let allData = '';
@@ -103,6 +102,7 @@ if (argArray.length < 3) {
     saveIndex = argArray.findIndex(function(elem) {
       return elem.toUpperCase() === searchStr;
     });
+
     if (saveIndex === -1) {
       myMethod = argArray[3].toUpperCase();
     } else {
@@ -120,6 +120,7 @@ if (argArray.length < 3) {
   if (argArray[2].indexOf('localhost') >= 0) {
     myPort = 8080;
     myHost = 'localhost';
+
     if (findSlash === -1 || findSlash === argArray[2].length - 1) {
       myUri = '/index.html';
     } else {
@@ -128,6 +129,7 @@ if (argArray.length < 3) {
     // if looking outside of localhost then parse argument into host/uri based on '/'
   } else {
     myPort = 80;
+
     if (findSlash === -1) {
       myHost = argArray[2];
       myUri = '/';
